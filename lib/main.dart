@@ -29,39 +29,73 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
+  Color _backgroundColor = Colors.white;
+  void _changeBackground(c) {
     setState(() {
-      _counter++;
+      _backgroundColor = c;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: _backgroundColor,
       appBar: AppBar(
         title: Text(widget.title),
-        actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.access_time)),
-          IconButton(onPressed: () {}, icon: const Icon(Icons.access_time)),
-          IconButton(onPressed: () {}, icon: const Icon(Icons.access_time)),
-        ],
       ),
-      body: const Column(
-        children: [
-          Text(
-            'ciao',
-            style: TextStyle(backgroundColor: Colors.blue, color: Colors.black),
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+      body: Container(
+          padding:
+              const EdgeInsets.only(top: 10, bottom: 10, right: 0, left: 0),
+          alignment: Alignment.center,
+          margin: const EdgeInsets.symmetric(vertical: 350, horizontal: 10),
+          //color: Colors.blue,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+
+            //mainAxisSize: MainAxisSize.max,
+
+            children: <Widget>[
+              FloatingActionButton.extended(
+                onPressed: () => _changeBackground(Colors.blue),
+                backgroundColor: Colors.blue,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0)),
+                icon: const Icon(Icons.palette_outlined),
+                label: const Text(
+                  "Blue",
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+              FloatingActionButton.extended(
+                onPressed: () => _changeBackground(Colors.red),
+                backgroundColor: Colors.red,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0)),
+                icon: const Icon(Icons.palette_outlined),
+                label: const Text(
+                  "Red",
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+              FloatingActionButton.extended(
+                onPressed: () => _changeBackground(Colors.yellow),
+                backgroundColor: Colors.yellow,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0)),
+                icon: const Icon(Icons.palette_outlined),
+                label: const Text(
+                  "Yellow",
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+            ],
+          )),
+      /*floatingActionButton: FloatingActionButton(
+        onPressed: () {}, //_incrementCounter,
         backgroundColor: Colors.black,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ),
+      ),*/
     );
   }
 }
